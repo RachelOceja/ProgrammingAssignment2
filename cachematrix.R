@@ -21,19 +21,19 @@ makeCacheMatrix <- function(x = matrix()) {
 ## cacheSolve is a function that calls the functions stored in the list returned by makeCacheMatrix
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-        InversedM<-x$getinversed()
+        IMatrix<-x$getinverse()
                 #Gets the inverse
-        If(!is.null(InversedM))
+        if(!is.null(IMatrix))
         {
                 #If inversed matrix is available, return it
         message("getting cached data")
-        return(InversedM)
+        return(IMatrix)
         }
         message("calculate and cache data")
         #If inversed matrix is not available, solve it
         OriginalM<-x$get()
-        InversedM<-solve(OriginalM)
-        x$setinversed(InversedM)
-        InversedM
+        IMatrix<-solve(OriginalM,...)
+        x$setinverse(IMatrix)
+        IMatrix
 }
 
